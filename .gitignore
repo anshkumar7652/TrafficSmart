@@ -1,0 +1,19 @@
+# Compiled class files
+out/
+bin/
+*.class
+
+# Log and data files
+data/logs/*.dat
+data/exports/*.csv
+data/logs/*.ser
+
+# IDE settings
+.settings/
+*.elementlog
+
+# Graphify temporary outputs
+graphify-out/.graphify_python
+graphify-out/.graphify_root
+graphify-out/.graphify_labels.json
+graphify-out/cache/
