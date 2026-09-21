@@ -43,6 +43,7 @@ OOTS_Capstone_Project/
 │   └── exports/
 │       └── traffic_summary_export.csv         ← CSV audit reports generated via character streams
 ├── docs/
+│   ├── images/                                ← GUI interface screenshots
 │   ├── uml_class_diagram.md                   ← Mermaid UML class and sequence diagrams
 │   └── architecture.md                        ← 12-section comprehensive architecture specification
 ├── src/
@@ -151,26 +152,47 @@ Supported TCP Client Commands:
 
 ---
 
-## 🎨 5. Graphical Interface Features
+## 🎨 5. Graphical Interface Features & GUI Screenshots
 
-1. **🚦 Live Intersection Monitor Tab**:
-   - Custom `paintComponent(Graphics g)` drawing roads, pedestrian crosswalks, and glowing 3-color traffic lights.
-   - Dynamic vehicle queues with visual emergency strobe flashers.
-   - Live color-coded congestion percentage gauge (Green: <40%, Yellow: 40-70%, Red: >70%).
-   - Smooth 500ms animation cycles powered by `javax.swing.Timer`.
-2. **🕹️ Signal Control Console Tab**:
-   - Operator dropdowns for intersection, signal, and target state.
-   - One-click Emergency Corridor trigger that turns approach corridors to GREEN and cross-traffic to RED.
-   - Clear override restore button.
-3. **📡 Sensor Ingestion Form Tab**:
-   - Field validation for sensor ID, intersection, counts, and speed.
-   - Directly appends binary telemetry records to `data/logs/` using Byte Streams.
-4. **📊 Reports & Analytics Tab**:
-   - Interactive `JTable` displaying live congestion across all network nodes.
-   - Synthesized audit report generated via `StringBuilder`.
-   - Direct "Export Report to CSV" button.
-5. **📜 Live Event Log Tab**:
-   - Real-time notification stream powered by a thread-safe `LinkedList` FIFO queue.
+### 🔑 Authentication Interface
+![Traffic Control Center - Authentication Screen](docs/images/gui_login_screen.png)
+*Secure login interface with role-based credentials validation and clean styling.*
+
+---
+
+### 🚦 1. Live Intersection Monitor Tab
+![Live Intersection Monitor](docs/images/gui_live_intersection_monitor.png)
+- **Custom 2D Graphics Canvas**: Custom `paintComponent(Graphics g)` rendering multi-lane road intersections, crosswalks, vehicle bounding boxes, and glowing 3-color signal beacons.
+- **Dynamic Traffic Simulation**: Smooth animation cycles showing active vehicle queues, signal timer countdowns, and emergency strobe flashers.
+- **Live Congestion Level Gauge**: Real-time color-coded capacity meter (Green: <40%, Yellow: 40-70%, Red: >70%).
+
+---
+
+### 🕹️ 2. Signal Control Console Tab
+![Signal Control Console](docs/images/gui_signal_control_console.png)
+- **Manual Operator Controls**: Dropdown selectors for active intersection, specific signal ID, and target signal phase (GREEN / YELLOW / RED).
+- **Global Emergency Transit Override**: One-click priority trigger enforcing emergency corridors (green-wave) while locking cross-traffic.
+
+---
+
+### 📡 3. Sensor Data Ingestion Tab
+![Sensor Data Ingestion](docs/images/gui_sensor_data_ingestion.png)
+- **Telemetry Ingestion Form**: Form for submitting sensor telemetry data, validating sensor IDs, vehicle counts, and average speeds.
+- **Binary Stream Persistence**: Appends binary sensor logs directly to disk using `DataOutputStream` byte streams.
+
+---
+
+### 📊 4. Reports & Analytics Tab
+![Reports & Analytics](docs/images/gui_reports_analytics.png)
+- **Interactive Metrics Grid**: Multi-column `JTable` rendering live node status, vehicle density, and signal timings across all network junctions.
+- **Synthesized Audit Log**: Auto-generated report view powered by `StringBuilder` and regex pattern formatting, with direct CSV export support.
+
+---
+
+### 📜 5. Live Event Log Tab
+![Live Event Log](docs/images/gui_live_event_log.png)
+- **Real-Time Log Stream**: Thread-safe FIFO event list updating dynamically as signal state changes, telemetry feeds ingest, and client socket events trigger.
+
 
 ---
 
